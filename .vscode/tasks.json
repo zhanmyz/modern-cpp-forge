@@ -1,0 +1,61 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CMake Configure",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "-B",
+                "${workspaceFolder}/build",
+                "-S",
+                "${workspaceFolder}",
+                "-DCMAKE_BUILD_TYPE=Debug",
+                "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "CMake Build All",
+            "type": "shell",
+            "command": "cmake",
+            "args": [
+                "--build",
+                "${workspaceFolder}/build",
+                "--parallel",
+                "$(nproc)"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "dependsOn": "CMake Configure",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "label": "Build and Show Binary Path",
+            "type": "shell",
+            "command": "bash",
+            "args": [
+                "-c",
+                "cmake --build ${workspaceFolder}/build --parallel $(nproc) && echo '' && echo '══════════════════════════════════════════' && echo '  ▶ Debug Binary: bin/${relativeFileDirname}/${fileBasenameNoExtension}' && echo '══════════════════════════════════════════'"
+            ],
+            "dependsOn": "CMake Configure",
+            "group": "build",
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "presentation": {
+                "echo": true,
+                "reveal": "always",
+                "focus": false,
+                "panel": "shared",
+                "showReuseMessage": false,
+                "clear": true
+            }
+        }
+    ]
+}

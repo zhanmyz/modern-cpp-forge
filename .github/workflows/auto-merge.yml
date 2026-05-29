@@ -1,0 +1,44 @@
+name: Auto PR and Merge
+
+on:
+  push:
+    branches:
+      - feature
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  create-pr:
+    # Temporarily disabled — remove `if: false` to re-enable
+    if: false
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create Pull Request
+        id: cpr
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          commit-message: auto merge feature
+          title: "Auto Merge Feature -> Main"
+          body: |
+            This PR was automatically created.
+          branch: auto-pr-feature
+          base: main
+          delete-branch: true
+
+      - name: Enable Auto Merge
+        if: steps.cpr.outputs.pull-request-number
+        run: |
+          gh pr merge \
+            --auto \
+            --merge \
+            "${{ steps.cpr.outputs.pull-request-number }}"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+

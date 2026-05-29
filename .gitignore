@@ -1,6 +1,9 @@
 # Prerequisites
 *.d
 
+# Output binaries
+bin/
+
 # Compiled Object files
 *.slo
 *.lo

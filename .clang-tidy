@@ -1,0 +1,16 @@
+Checks: >
+  -*,
+  bugprone-*,
+  cppcoreguidelines-*,
+  modernize-*,
+  performance-*,
+  readability-*,
+  -modernize-use-trailing-return-type,
+  -readability-magic-numbers,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -readability-identifier-length
+
+WarningsAsErrors: ''
+HeaderFilterRegex: '.*'
+FormatStyle: file

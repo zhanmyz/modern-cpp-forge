@@ -1,0 +1,94 @@
+# =============================================================================
+# .clang-format - C++ Code Formatting Configuration
+# =============================================================================
+#
+# [Purpose]
+#   clang-format is an LLVM code formatting tool for consistent C/C++ style.
+#   This file defines the project's formatting rules, applied on save or manually.
+#
+# [Usage]
+#   1. VS Code: Shift+Alt+F to format current file
+#   2. VS Code setting "editor.formatOnSave": true for auto-format on save
+#   3. Format a single file from CLI:
+#        clang-format -i src/concurrency/future_test.cpp
+#   4. Format entire project:
+#        find src reference tests -name "*.cpp" -o -name "*.h" | xargs clang-format -i
+#   5. Check only (no modification), show diff:
+#        clang-format --dry-run --Werror src/concurrency/future_test.cpp
+#
+# [Reference]
+#   https://clang.llvm.org/docs/ClangFormatStyleOptions.html
+# =============================================================================
+---
+# Base style: customized from Google C++ Style Guide
+# Other options: LLVM, Chromium, Mozilla, WebKit, Microsoft
+BasedOnStyle: Google
+
+# Indent width: 4 spaces per level
+# e.g.: if (x) {
+#            doSomething();  // 4-space indent
+#        }
+IndentWidth: 4
+
+# Column limit: max 100 characters per line, auto-wraps beyond this
+# e.g.: long function calls are split across lines
+ColumnLimit: 100
+
+# Do not reflow comments: preserve original line breaks in comments
+# e.g.: multi-line comment blocks are not merged or re-wrapped
+ReflowComments: false
+
+# Short functions on single line: only allow inline (class-body) functions
+# e.g.: class Foo { int getX() { return x; } };  // OK, inline in class
+#       int getX() { return x; }                  // NOT collapsed (not inline)
+AllowShortFunctionsOnASingleLine: Inline
+
+# Short if on single line: never
+# e.g.: if (x) return;  // disallowed, must break to next line
+AllowShortIfStatementsOnASingleLine: Never
+
+# Short loops on single line: never
+# e.g.: for (int i=0; i<n; i++) sum+=i;  // disallowed, must break
+AllowShortLoopsOnASingleLine: false
+
+# Brace wrapping: Attach means opening brace stays on same line
+# e.g.: if (x) {        // brace attached
+#            ...
+#        }
+# Compare with Allman: if (x)
+#                       {    // brace on new line
+BreakBeforeBraces: Attach
+
+# Space after template keyword
+# e.g.: template <typename T>  // space between template and <
+SpaceAfterTemplateKeyword: true
+
+# Pointer/reference alignment: left (attached to type)
+# e.g.: int* ptr;    // not int *ptr or int * ptr
+PointerAlignment: Left
+
+# Do not derive pointer alignment: always use PointerAlignment setting above
+DerivePointerAlignment: false
+
+# Sort #include directives alphabetically
+SortIncludes: true
+
+# Include grouping: Regroup adds blank lines between priority groups
+IncludeBlocks: Regroup
+
+# Include priority rules (lower number = higher priority, groups separated by blank lines)
+# Result:
+#   #include <common/logger.h>    // Priority 1: project common headers
+#   #include <common/timer.h>
+#
+#   #include <future>             // Priority 2: system/standard library headers
+#   #include <thread>
+#
+#   #include "local_header.h"     // Priority 3: local headers
+IncludeCategories:
+  - Regex: '^<common/'
+    Priority: 1
+  - Regex: '^<'
+    Priority: 2
+  - Regex: '^"'
+    Priority: 3
