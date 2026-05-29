@@ -18,7 +18,7 @@ Official C++ reference: https://en.cppreference.com
 ## 📁 Project Structure
 
 ```
-learning_cpp/
+modern-cpp-forge/
 ├── CMakeLists.txt              # Root build file
 ├── .clang-format               # Code formatting config
 ├── .clang-tidy                 # Static analysis config
@@ -88,8 +88,8 @@ learning_cpp/
 ### 1. Clone
 
 ```bash
-git clone https://github.com/your-username/learning_cpp.git
-cd learning_cpp
+git clone https://github.com/zhanmyz/modern-cpp-forge.git
+cd modern-cpp-forge
 ```
 
 ### 2. Build

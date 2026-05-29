@@ -18,7 +18,7 @@
 ## 📁 项目结构
 
 ```
-learning_cpp/
+modern-cpp-forge/
 ├── CMakeLists.txt              # 项目根构建文件
 ├── .clang-format               # 代码格式化配置
 ├── .clang-tidy                 # 静态分析配置
@@ -88,8 +88,8 @@ learning_cpp/
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-username/learning_cpp.git
-cd learning_cpp
+git clone https://github.com/zhanmyz/modern-cpp-forge.git
+cd modern-cpp-forge
 ```
 
 ### 2. 构建

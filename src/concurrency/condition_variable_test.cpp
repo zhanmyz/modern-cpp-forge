@@ -1,7 +1,7 @@
 /**
  * @file condition_variable_test.cpp
  * @brief <condition_variable> header — Advanced usage of std::condition_variable and friends
- * Build: cd learning_cpp && cmake -B build && cmake --build build --target src_modern_cpp_condition_variable_test 2>&1
+ * Build: cd modern-cpp-forge && cmake -B build && cmake --build build --target src_modern_cpp_condition_variable_test 2>&1
  * Reference: https://en.cppreference.com/cpp/header/condition_variable
  *            https://en.cppreference.com/cpp/thread/condition_variable
  */

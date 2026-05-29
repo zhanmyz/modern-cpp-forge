@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(learning_cpp
+project(modern-cpp-forge
     VERSION 1.0.0
     DESCRIPTION "Advanced C++ Learning Project"
     LANGUAGES CXX

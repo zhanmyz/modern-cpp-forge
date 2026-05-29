@@ -1,7 +1,7 @@
 /**
  * @file function_test.cpp
  * @brief <functional> header — Advanced usage of std::function and friends
- * Build: cd learning_cpp && cmake -B build && cmake --build build --target src_modern_cpp_function_test 2>&1
+ * Build: cd modern-cpp-forge && cmake -B build && cmake --build build --target src_modern_cpp_function_test 2>&1
  * Reference: https://en.cppreference.com/w/cpp/utility/functional
  *            https://en.cppreference.com/w/cpp/header/functional
  *            https://en.cppreference.com/cpp/utility/functional/function
